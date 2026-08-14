@@ -339,6 +339,6 @@ For issues, questions, or suggestions, please open an issue in the repository.
 
 ---
 
-**Last Updated**: 2024
+**Last Updated**: 2026
 **Node Version**: v18.0+
 **Package Manager**: npm v9.0+
