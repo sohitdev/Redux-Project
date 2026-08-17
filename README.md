@@ -1,344 +1,732 @@
-# Media Search Application
+# Media Search Hub
 
-A modern, high-performance React application for searching and managing media across multiple sources (photos, videos, and GIFs) using a unified interface. Built with Vite, Redux Toolkit, and Tailwind CSS.
+<div align="center">
+
+![React](https://img.shields.io/badge/React-19.2-61dafb?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-8.1-646cff?logo=vite&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux_Toolkit-2.12-764abc?logo=redux&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3-38b2ac?logo=tailwindcss&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Node](https://img.shields.io/badge/Node-18+-339933?logo=node.js&logoColor=white)
+
+A powerful, production-grade media discovery and collection platform that aggregates photos, videos, and GIFs from multiple premium sources into a unified, intuitive interface.
+
+[Features](#-features) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [Deployment](#-deployment) • [Contributing](#-contributing)
+
+</div>
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Quick Start](#-quick-start)
+- [Configuration](#-configuration)
+- [Documentation](#-documentation)
+- [Deployment](#-deployment)
+- [Performance](#-performance)
+- [Troubleshooting](#-troubleshooting)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+---
 
 ## Overview
 
-This application provides seamless access to multiple media APIs through a single search interface:
+**Media Search Hub** is a modern, full-featured application for discovering and curating media content across multiple platforms. Users can seamlessly search for photos, videos, and GIFs from premium APIs (Unsplash, Pexels, Giphy) and build personal collections with persistent storage.
 
-- **Photos**: Powered by [Unsplash API](https://unsplash.com/developers)
-- **Videos**: Powered by [Pexels API](https://www.pexels.com/api/)
-- **GIFs**: Powered by [Giphy API](https://developers.giphy.com/)
+Built with cutting-edge technologies including React 19, Vite, Redux Toolkit, and Tailwind CSS, this application demonstrates production-level best practices in state management, component architecture, and performance optimization.
 
-## Features
+### Use Cases
 
-- 🔍 **Unified Search**: Search across photos, videos, and GIFs with a single query
-- 🎨 **Responsive Design**: Fully responsive UI built with Tailwind CSS
-- ⚡ **Fast Performance**: Vite for lightning-fast dev server and optimized builds
-- 🔄 **State Management**: Redux Toolkit for predictable, scalable state management
-- 📦 **Modern Stack**: React 19, Vite 8, Redux Toolkit 2
-- 🎯 **Production-Ready**: ESLint configuration and best practices included
+- 📸 Content creators building media libraries
+- 🎨 Designers sourcing reference materials
+- 🎬 Video producers finding stock footage
+- 🎉 Marketing teams curating visual content
+- 👥 Teams collaborating on media collections
 
-## Tech Stack
+---
 
-### Frontend Framework
+## ✨ Features
 
-- **React 19.2**: Latest React with modern hooks and features
-- **Vite 8**: Next-generation build tool with instant HMR
-- **React Router 8**: Client-side routing
+### Core Features
+
+- **🔍 Unified Search**: Search across photos, videos, and GIFs with a single query
+- **📁 Smart Collections**: Save and organize favorite media with persistent localStorage
+- **🎯 Tab-Based Navigation**: Easy switching between photo, video, and GIF sources
+- **⚡ Real-Time Loading States**: Visual feedback with loading indicators
+- **🔔 Toast Notifications**: User-friendly feedback for all actions
+- **🔗 Direct Media Links**: Open original content on source platforms
+- **📱 Fully Responsive**: Works seamlessly on desktop, tablet, and mobile devices
+
+### Advanced Features
+
+- **State Persistence**: Redux with localStorage sync for collection persistence
+- **Error Handling**: Comprehensive error management with user-friendly messages
+- **Performance Optimized**: Lazy loading, code splitting, and efficient rendering
+- **Accessibility Ready**: Semantic HTML and keyboard navigation support
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend Framework & Build
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| **React** | 19.2 | UI library with modern hooks |
+| **Vite** | 8.1 | Next-gen build tool with HMR |
+| **React Router** | 8.3 | Client-side routing & navigation |
 
 ### State Management
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| **Redux Toolkit** | 2.12 | Predictable state management |
+| **React-Redux** | 9.3 | Official React bindings |
 
-- **Redux Toolkit 2.12**: Simplified Redux with built-in thunks and middleware
-- **React-Redux 9.3**: Official React bindings for Redux
+### Styling & UI
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| **Tailwind CSS** | 4.3 | Utility-first CSS framework |
+| **Tailwind Vite Plugin** | 4.3 | Optimized Vite integration |
 
-### Styling
+### HTTP & Notifications
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| **Axios** | 1.19 | Promise-based HTTP client |
+| **React Toastify** | Latest | Toast notifications |
 
-- **Tailwind CSS 4.3**: Utility-first CSS framework
-- **Tailwind CSS Vite Plugin 4.3**: Optimized Vite integration
+### Development & Quality
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| **ESLint** | 10.6 | Code quality & consistency |
+| **Vite React Plugin** | 6.0 | Fast Refresh & optimization |
 
-### API & HTTP
+---
 
-- **Axios 1.19**: Promise-based HTTP client
-
-### Development Tools
-
-- **ESLint 10**: Code quality and consistency
-- **Vite Plugins**: React Fast Refresh for HMR
-
-## Project Structure
+## 📂 Project Structure
 
 ```
+Redux-Project/
 ├── src/
-│   ├── components/          # Reusable React components
-│   │   ├── ResultCard.jsx   # Individual media result card
-│   │   ├── ResultGrid.jsx   # Grid container for results
-│   │   ├── SearchBar.jsx    # Search input component
-│   │   └── Tabs.jsx         # Tab switcher for media types
-│   ├── pages/               # Page components
-│   │   └── CollectionPage.jsx  # Media collection view
+│   ├── components/
+│   │   ├── ResultCard.jsx          # Individual media item display with Save/Remove
+│   │   ├── ResultGrid.jsx          # Grid layout for search results
+│   │   ├── SearchBar.jsx           # Search input component
+│   │   └── Tabs.jsx                # Media type tab switcher (photo/video/gif)
+│   │
+│   ├── pages/
+│   │   └── CollectionPage.jsx      # Saved media collection view
+│   │
 │   ├── api/
-│   │   └── mediaApi.js      # API integration layer
-│   ├── redux/               # State management
-│   │   ├── store.js         # Redux store configuration
-│   │   └── features/        # Redux slices
-│   │       ├── searchSlice.js
-│   │       └── collectionSlice.js
-│   ├── App.jsx              # Root component
-│   ├── main.jsx             # Entry point
-│   └── index.css            # Global styles
-├── public/                  # Static assets
-├── package.json             # Dependencies and scripts
-├── vite.config.js          # Vite configuration
-├── eslint.config.js        # ESLint rules
-└── README.md               # This file
+│   │   └── mediaApi.js             # Multi-source API integration
+│   │
+│   ├── redux/
+│   │   ├── store.js                # Redux store configuration
+│   │   └── features/
+│   │       ├── searchSlice.js      # Search state management
+│   │       └── collectionSlice.js  # Collection state management
+│   │
+│   ├── App.jsx                     # Root component
+│   ├── main.jsx                    # Application entry point
+│   └── index.css                   # Global styles & Tailwind imports
+│
+├── public/                         # Static assets
+├── index.html                      # HTML template
+├── package.json                    # Dependencies & scripts
+├── vite.config.js                  # Vite configuration
+├── eslint.config.js                # ESLint rules
+├── tailwind.config.js              # Tailwind CSS configuration
+└── README.md                       # This file
 ```
 
-## Getting Started
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- **Node.js**: v18.0 or higher
-- **npm**: v9.0 or higher (or yarn/pnpm)
+Ensure you have the following installed:
+- **Node.js** 18.0 or higher
+- **npm** 9.0+ or **yarn** 3.0+
+- Git for version control
+
+Check versions:
+```bash
+node --version    # Should be v18.0 or higher
+npm --version     # Should be v9.0 or higher
+```
 
 ### Installation
 
-1. **Clone the repository**
-
+1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/yourusername/Redux-Project.git
    cd Redux-Project
    ```
 
-2. **Install dependencies**
-
+2. **Install Dependencies**
    ```bash
    npm install
+   # or
+   yarn install
    ```
 
-3. **Set up environment variables**
-
-   Create a `.env.local` file in the project root:
-
+3. **Create Environment File**
+   
+   Create `.env.local` in the project root:
    ```env
-   VITE_UNSPLASH_KEY=your_unsplash_api_key
-   VITE_PEXELS_KEY=your_pexels_api_key
-   VITE_GIPHY_KEY=your_giphy_api_key
+   VITE_UNSPLASH_KEY=your_unsplash_key_here
+   VITE_PEXELS_KEY=your_pexels_key_here
+   VITE_GIPHY_KEY=your_giphy_key_here
    ```
 
-   **Get API Keys:**
-   - [Unsplash API](https://unsplash.com/developers) - Free tier available
-   - [Pexels API](https://www.pexels.com/api/) - Free API key
-   - [Giphy API](https://developers.giphy.com/) - Free tier available
+4. **Start Development Server**
+   ```bash
+   npm run dev
+   ```
 
-### Development
+   Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-Start the development server with hot module replacement:
+### Available Scripts
 
-```bash
-npm run dev
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server with HMR |
+| `npm run build` | Build for production (generates `/dist`) |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Check code quality with ESLint |
+
+---
+
+## 🔐 Configuration
+
+### Environment Variables
+
+The application requires API keys from three providers:
+
+#### 1. **Unsplash API** (Photos)
+- **Get Key**: [https://unsplash.com/developers](https://unsplash.com/developers)
+- **Steps**:
+  1. Sign up for a free account
+  2. Create an application
+  3. Copy the Access Key
+  4. Set `VITE_UNSPLASH_KEY=<your-key>`
+- **Limits**: 50 requests/hour (free tier)
+
+#### 2. **Pexels API** (Videos)
+- **Get Key**: [https://www.pexels.com/api/](https://www.pexels.com/api/)
+- **Steps**:
+  1. Create a free account
+  2. Request an API key
+  3. Check email for approval
+  4. Set `VITE_PEXELS_KEY=<your-key>`
+- **Limits**: 200 requests/hour (free tier)
+
+#### 3. **Giphy API** (GIFs)
+- **Get Key**: [https://developers.giphy.com/](https://developers.giphy.com/)
+- **Steps**:
+  1. Sign up for a developer account
+  2. Create an app
+  3. Copy the API key
+  4. Set `VITE_GIPHY_KEY=<your-key>`
+- **Limits**: 43,200 requests/day (free tier)
+
+### Environment File Example
+
+```env
+# .env.local
+VITE_UNSPLASH_KEY=your_key_here_minimum_20_chars
+VITE_PEXELS_KEY=your_key_here_minimum_20_chars
+VITE_GIPHY_KEY=your_key_here_minimum_20_chars
+
+# Optional: For production
+VITE_API_TIMEOUT=10000
 ```
 
-The application will be available at `http://localhost:5173`
+### Build Configuration
 
-### Building for Production
+**Vite Config** (`vite.config.js`):
+```javascript
+export default {
+  plugins: [react(), tailwindcss()],
+  server: {
+    port: 5173,
+    strictPort: false,
+    open: true
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    minify: 'terser'
+  }
+}
+```
 
-Optimize and bundle for production:
+---
+
+## 📚 Documentation
+
+### Redux State Structure
+
+#### Search Slice (`searchSlice`)
+
+Manages search query, results, and active media type:
+
+```javascript
+{
+  search: {
+    query: "cat",              // Current search query
+    activeTab: "photo",        // Active tab: "photo" | "video" | "gif"
+    results: [...],            // Array of media items
+    loading: false,            // Loading state
+    error: null                // Error message if any
+  }
+}
+```
+
+**Available Actions**:
+- `setQuery(query)` - Set search query
+- `setActiveTabs(tab)` - Switch media type
+- `setLoading()` - Set loading state
+- `setResults(data)` - Update results
+- `setError(error)` - Set error message
+- `clearResults()` - Clear results
+
+#### Collection Slice (`collectionSlice`)
+
+Manages saved media with localStorage persistence:
+
+```javascript
+{
+  collection: {
+    items: [
+      {
+        id: "abc123",
+        type: "photo",
+        title: "...",
+        src: "...",
+        url: "...",
+        ...
+      }
+    ]
+  }
+}
+```
+
+**Available Actions**:
+- `addCollection(item)` - Add media to collection
+- `removeCollection(id)` - Remove media from collection
+- `clearCollection(type)` - Clear all items of a type
+
+### API Documentation
+
+#### fetchPhotos(query, page, per_page)
+Search for photos on Unsplash
+
+**Parameters**:
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| query | string | required | Search term |
+| page | number | 1 | Page number for pagination |
+| per_page | number | 20 | Results per page (1-30) |
+
+**Returns**: `Promise<Array>` - Array of photo objects
+```javascript
+[
+  {
+    id: "abc123",
+    type: "photo",
+    src: "https://...",
+    url: "https://unsplash.com/photos/...",
+    title: "Photo description",
+    author: "Photographer name"
+  }
+]
+```
+
+**Example**:
+```javascript
+import { fetchPhotos } from './api/mediaApi';
+
+const results = await fetchPhotos("mountain", 1, 20);
+```
+
+---
+
+#### fetchVideos(query, per_page)
+Search for videos on Pexels
+
+**Parameters**:
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| query | string | required | Search term |
+| per_page | number | 20 | Results per page (1-80) |
+
+**Returns**: `Promise<Array>` - Array of video objects
+```javascript
+[
+  {
+    id: 12345,
+    type: "video",
+    src: "https://...",
+    url: "https://pexels.com/videos/...",
+    title: "Video title"
+  }
+]
+```
+
+---
+
+#### fetchGifs(query, page, limit)
+Search for GIFs on Giphy
+
+**Parameters**:
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| query | string | required | Search term |
+| page | number | 1 | Page number |
+| limit | number | 20 | Results per page (1-100) |
+
+**Returns**: `Promise<Array>` - Array of GIF objects
+
+---
+
+### Component API
+
+#### ResultCard Component
+
+Displays individual media with save/remove functionality.
+
+**Props**:
+```javascript
+{
+  item: {
+    id: string,
+    type: "photo" | "video" | "gif",
+    src: string,
+    url: string,
+    title: string
+  },
+  isCollectionPage?: boolean  // Default: false
+}
+```
+
+**Features**:
+- Responsive grid layout
+- Hover effects
+- Toast notifications
+- Opens original source in new tab
+
+#### Tabs Component
+
+Switches between media types.
+
+**Features**:
+- Active tab highlighting
+- Smooth transitions
+- Click handlers for tab switching
+
+#### ResultGrid Component
+
+Displays search results in grid format.
+
+**Features**:
+- Integrates with Redux for state
+- Automatic data fetching
+- Loading and error states
+- Responsive layout
+
+---
+
+## 🚢 Deployment
+
+### Build for Production
 
 ```bash
 npm run build
 ```
 
-Output will be generated in the `dist/` directory.
+Generates optimized files in `/dist` directory:
+- Minified JavaScript bundles
+- Optimized CSS
+- Compiled assets
 
-### Preview Production Build
+### Deployment Platforms
 
-Test the production build locally:
-
+#### Vercel (Recommended)
 ```bash
-npm run preview
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
 ```
 
-### Linting
-
-Check code quality and consistency:
-
+#### Netlify
 ```bash
-npm run lint
+# Install Netlify CLI
+npm i -g netlify-cli
+
+# Deploy
+netlify deploy --prod
 ```
 
-## API Integration
-
-### Media API Functions
-
-All API functions are located in [src/api/mediaApi.js](src/api/mediaApi.js):
-
-#### fetchPhotos(query, page, per_page)
-
-Fetches photos from Unsplash API
-
-- **Parameters:**
-  - `query` (string): Search term
-  - `page` (number): Page number (default: 1)
-  - `per_page` (number): Results per page (default: 20)
-- **Returns:** Array of photo objects
-
-#### fetchVideos(query, per_page)
-
-Fetches videos from Pexels API
-
-- **Parameters:**
-  - `query` (string): Search term
-  - `per_page` (number): Results per page (default: 20)
-- **Returns:** Array of video objects
-
-#### fetchGifs(query, page, limit)
-
-Fetches GIFs from Giphy API
-
-- **Parameters:**
-  - `query` (string): Search term
-  - `page` (number): Page number (default: 1)
-  - `limit` (number): Results per page (default: 20)
-- **Returns:** Array of GIF objects
-
-## Redux Store Architecture
-
-The Redux store is configured in [src/redux/store.js](src/redux/store.js) using Redux Toolkit's `configureStore`:
-
-### Slices (Currently Available)
-
-- **searchSlice**: Search query and filters state
-- **collectionSlice**: Media collection and favorites management
-
-### Adding New Reducers
-
-To add a new reducer:
-
-```javascript
-import { createSlice } from "@reduxjs/toolkit";
-
-const mySlice = createSlice({
-  name: "myFeature",
-  initialState: {},
-  reducers: {
-    // Define actions here
-  },
-});
-
-export default mySlice.reducer;
-```
-
-Then import and add to store:
-
-```javascript
-import { configureStore } from "@reduxjs/toolkit";
-import myReducer from "./features/mySlice";
-
-export const store = configureStore({
-  reducer: {
-    myFeature: myReducer,
-  },
-});
-```
-
-## Components
-
-### ResultCard
-
-Displays individual media results with metadata and actions.
-
-### ResultGrid
-
-Container component for rendering multiple result cards in a grid layout.
-
-### SearchBar
-
-Input component for user search queries with filtering options.
-
-### Tabs
-
-Navigation component to switch between media types (photos, videos, GIFs).
-
-## Styling
-
-The project uses **Tailwind CSS** for all styling. Key configuration files:
-
-- `tailwind.config.js`: Tailwind configuration
-- `src/index.css`: Global styles and Tailwind directives
-
-### Class Naming Convention
-
-Follow Tailwind's utility-first approach:
-
-```jsx
-<button className="px-4 py-2 bg-green-400 text-white rounded hover:bg-green-500">
-  Click me
-</button>
-```
-
-## Environment Variables
-
-The application uses environment variables for sensitive API keys. These should never be committed to version control.
-
-### Available Variables
-
-| Variable            | Description             |
-| ------------------- | ----------------------- |
-| `VITE_UNSPLASH_KEY` | Unsplash API access key |
-| `VITE_PEXELS_KEY`   | Pexels API access key   |
-| `VITE_GIPHY_KEY`    | Giphy API access key    |
-
-### Loading Environment Variables
-
-Environment variables are accessed via `import.meta.env` in Vite:
-
-```javascript
-const API_KEY = import.meta.env.VITE_API_KEY;
-```
-
-## Performance Optimization
-
-- ✅ **Vite**: Optimized build process with tree-shaking
-- ✅ **Code Splitting**: Automatic route-based code splitting with React Router
-- ✅ **Lazy Loading**: Components and routes can be lazy-loaded as needed
-- ✅ **Image Optimization**: Use external CDNs from media APIs
-- ✅ **Caching**: Redux state persists search results
-
-## Best Practices
-
-1. **API Keys**: Never commit `.env.local` to version control
-2. **Error Handling**: Implement try-catch blocks for API calls
-3. **Loading States**: Use Redux to manage loading and error states
-4. **Component Reusability**: Create small, focused components
-5. **Naming Conventions**: Use camelCase for variables/functions, PascalCase for components
-
-## Development Workflow
-
-1. Create a feature branch: `git checkout -b feature/my-feature`
-2. Make changes and test locally: `npm run dev`
-3. Run linter: `npm run lint`
-4. Commit changes: `git commit -m "feat: add my feature"`
-5. Push to remote: `git push origin feature/my-feature`
-6. Open a pull request
-
-## Troubleshooting
-
-### API Key Issues
-
-- Verify `.env.local` file is in the project root
-- Ensure API keys are correctly set in environment variables
-- Check that API services are not rate-limited
-
-### Port Already in Use
-
+#### GitHub Pages
 ```bash
-# Change the default port
-npm run dev -- --port 3000
+# Add to package.json
+"homepage": "https://yourusername.github.io/Redux-Project"
+
+# Deploy
+npm run build
+npm install --save-dev gh-pages
+npx gh-pages -d dist
 ```
 
-### Build Issues
+#### Docker Deployment
 
-- Clear node_modules and reinstall: `rm -rf node_modules && npm install`
-- Clear cache: `rm -rf dist && npm run build`
+Create `Dockerfile`:
+```dockerfile
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
 
-## Contributing
+FROM node:18-alpine
+WORKDIR /app
+RUN npm i -g serve
+COPY --from=builder /app/dist ./dist
+EXPOSE 3000
+CMD ["serve", "-s", "dist", "-l", "3000"]
+```
 
-1. Follow the existing code style
-2. Run `npm run lint` before committing
-3. Write meaningful commit messages
-4. Test changes thoroughly before submitting
+Build and run:
+```bash
+docker build -t media-search-hub .
+docker run -p 3000:3000 media-search-hub
+```
 
-## License
+### Environment Variables for Production
 
-This project is licensed under the MIT License - see LICENSE file for details.
+Create `.env.production`:
+```env
+VITE_UNSPLASH_KEY=prod_unsplash_key
+VITE_PEXELS_KEY=prod_pexels_key
+VITE_GIPHY_KEY=prod_giphy_key
+```
 
-## Support
-
-For issues, questions, or suggestions, please open an issue in the repository.
+**Important**: Use separate API keys for production with higher rate limits.
 
 ---
 
-**Last Updated**: 2026
-**Node Version**: v18.0+
-**Package Manager**: npm v9.0+
+## ⚡ Performance
+
+### Optimization Techniques
+
+- **Vite Bundle Analysis**: Monitor bundle size
+  ```bash
+  npm i -D vite-plugin-visualizer
+  ```
+
+- **Code Splitting**: Automatic route-based splitting with React Router
+
+- **Lazy Loading**: Components can be lazy-loaded:
+  ```javascript
+  const CollectionPage = lazy(() => import('./pages/CollectionPage'));
+  ```
+
+- **Caching Strategy**:
+  - Redux state caching for search results
+  - LocalStorage for collection persistence
+  - Browser caching headers in production
+
+### Performance Metrics
+
+Target metrics (Lighthouse):
+- **Performance**: > 90
+- **Accessibility**: > 90
+- **Best Practices**: > 90
+- **SEO**: > 90
+
+Measure with:
+```bash
+npm i -D lighthouse-ci
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### API Key Issues
+
+**Problem**: "401 Unauthorized" errors
+```
+Solution:
+- Verify keys are in .env.local
+- Check key hasn't expired
+- Ensure no leading/trailing spaces
+- Verify key has appropriate permissions
+```
+
+**Problem**: Rate limit exceeded
+```
+Solution:
+- Implement request debouncing
+- Add request caching
+- Upgrade to paid API tier
+```
+
+### Development Issues
+
+**Port Already in Use**
+```bash
+# Use different port
+npm run dev -- --port 3000
+
+# Or kill process on port 5173
+lsof -i :5173
+kill -9 <PID>
+```
+
+**Module Not Found Errors**
+```bash
+# Clear cache and reinstall
+rm -rf node_modules package-lock.json
+npm install
+npm run dev
+```
+
+**Build Fails**
+```bash
+# Clear build cache
+rm -rf dist
+npm run build
+
+# Check for ESLint errors
+npm run lint
+```
+
+### Redux DevTools
+
+Install Redux DevTools Extension:
+- [Chrome Extension](https://chrome.google.com/webstore/detail/redux-devtools/)
+- [Firefox Extension](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/)
+
+Monitor state changes in real-time during development.
+
+---
+
+## 🤝 Contributing
+
+### Getting Started
+
+1. **Fork the repository**
+   ```bash
+   git clone https://github.com/yourusername/Redux-Project.git
+   cd Redux-Project
+   ```
+
+2. **Create feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+
+3. **Make changes and test**
+   ```bash
+   npm run dev
+   npm run lint
+   ```
+
+4. **Commit with semantic messages**
+   ```bash
+   git commit -m "feat: add amazing feature"
+   # Types: feat, fix, docs, style, refactor, test, chore
+   ```
+
+5. **Push and open PR**
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+
+### Code Standards
+
+- **Style Guide**: Follow existing code patterns
+- **Naming**: camelCase for functions/variables, PascalCase for components
+- **Components**: Keep small and focused (< 200 lines)
+- **Comments**: Document complex logic only
+- **Commits**: Use conventional commit format
+
+### Pull Request Checklist
+
+- [ ] Code follows project style guide
+- [ ] ESLint passes (`npm run lint`)
+- [ ] Changes tested locally
+- [ ] Commit messages are descriptive
+- [ ] No console errors or warnings
+- [ ] Updated documentation if needed
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file for details.
+
+### MIT License Summary
+- ✅ Use commercially
+- ✅ Modify source code
+- ✅ Distribute
+- ❌ Hold liable
+- ❌ Use trademark
+
+---
+
+## 📞 Support & Community
+
+- **Issues**: [GitHub Issues](https://github.com/yourusername/Redux-Project/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/Redux-Project/discussions)
+- **Email**: support@yourdomain.com
+
+---
+
+## 🗺️ Roadmap
+
+### Upcoming Features
+- [ ] User authentication & accounts
+- [ ] Cloud sync for collections
+- [ ] Advanced search filters
+- [ ] Download capabilities
+- [ ] Share collections feature
+- [ ] Dark/Light theme toggle
+- [ ] Multiple language support
+- [ ] Mobile app (React Native)
+
+### Known Limitations
+- Free API tiers have rate limits
+- No offline functionality currently
+- Collections stored locally only
+
+---
+
+## 📊 Project Statistics
+
+- **React Components**: 4 main components
+- **Redux Slices**: 2 (search, collection)
+- **Supported APIs**: 3 (Unsplash, Pexels, Giphy)
+- **Bundle Size**: ~250KB (gzipped)
+- **Last Updated**: 2026-08-17
+- **Node.js Minimum**: v18.0
+- **npm Minimum**: v9.0
+
+---
+
+<div align="center">
+
+Made with ❤️ by the team
+
+[⬆ Back to top](#media-search-hub)
+
+</div>

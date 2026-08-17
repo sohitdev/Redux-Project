@@ -1,49 +1,15 @@
 import { useDispatch } from "react-redux";
 import {
-  addCollection,
   removeCollection,
+  removeToast,
 } from "../redux/features/collectionSlice";
-// ADDED: import toast directly in component
-import { toast, Zoom } from "react-toastify";
 
-const ResultCard = ({ item, isCollectionPage = false }) => {
+const CollectionCard = ({ item }) => {
   const dispatch = useDispatch();
 
   if (!item) return null;
 
   const isImage = item.type === "photo" || item.type === "gif";
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (isCollectionPage) {
-      dispatch(removeCollection(item.id));
-      // ADDED: remove toast fired here
-      toast.error("Removed from Collection!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        theme: "dark",
-        transition: Zoom,
-      });
-    } else {
-      dispatch(addCollection(item));
-      // ADDED: add toast fired here
-      toast.success("Added to Collection!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        theme: "dark",
-        transition: Zoom,
-      });
-    }
-  };
 
   return (
     <div className="w-[23vw] h-80 relative bg-white rounded overflow-hidden">
@@ -73,13 +39,18 @@ const ResultCard = ({ item, isCollectionPage = false }) => {
       <div className="w-full py-2 px-2 absolute bottom-0 bg-linear-to-b from-transparent to-black text-white">
         <button
           className="bg-red-400 active:scale-95 text-white rounded px-3 font-medium"
-          onClick={handleClick}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dispatch(removeCollection(item.id));
+            dispatch(removeToast());
+          }}
         >
-          {isCollectionPage ? "Remove" : "Save"}
+          Remove
         </button>
       </div>
     </div>
   );
 };
 
-export default ResultCard;
+export default CollectionCard;
