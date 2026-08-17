@@ -62,7 +62,7 @@ const ResultCard = ({ item, isCollectionPage = false }) => {
   };
 
   return (
-    <article className="group mb-4 inline-block w-full break-inside-avoid overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] text-left transition-[transform,border-color,background-color] duration-200 hover:scale-[1.02] hover:border-violet-500/30">
+    <article className="group mb-4 inline-block w-full break-inside-avoid overflow-hidden rounded-2xl border border-(--border) bg-(--surface) text-left transition-[transform,border-color,background-color] duration-200 hover:scale-[1.02] hover:border-violet-500/30">
       <a
         href={item.url}
         target="_blank"
@@ -96,13 +96,13 @@ const ResultCard = ({ item, isCollectionPage = false }) => {
         </span>
       </a>
       <div className="flex items-center justify-between gap-3 p-4">
-        <p className="min-w-0 truncate text-sm text-[var(--text-secondary)]">
+        <p className="min-w-0 truncate text-sm text-(--text-secondary)">
           {item.title || `Untitled ${item.type}`}
         </p>
         <button
           type="button"
           disabled={!isCollectionPage && isSaved}
-          className={`shrink-0 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors duration-200 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-[var(--surface)] disabled:cursor-not-allowed ${
+          className={`shrink-0 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors duration-200 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-(--surface) disabled:cursor-not-allowed ${
             isCollectionPage
               ? "border-red-500/60 text-red-400 hover:border-red-500 hover:bg-red-500 hover:text-white"
               : isSaved

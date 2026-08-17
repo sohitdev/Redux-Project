@@ -12,11 +12,11 @@ const Layout = ({ children, theme, onToggleTheme }) => {
     }`;
 
   return (
-    <div className="min-h-screen bg-[var(--page-bg)] transition-colors duration-200">
-      <header className="border-b border-[var(--border)] bg-[var(--page-bg)] transition-colors duration-200">
+    <div className="min-h-screen bg-(--page-bg) transition-colors duration-200">
+      <header className="border-b border-(--border) bg-(--page-bg) transition-colors duration-200">
         <nav className="flex h-16 w-full items-center justify-between px-4 md:px-6 lg:px-8">
           <NavLink
-            className="text-lg font-bold tracking-tight text-[var(--text-primary)] transition-colors hover:text-violet-400"
+            className="text-lg font-bold tracking-tight text-(--text-primary) transition-colors hover:text-violet-400"
             to="/"
           >
             <span className="sm:hidden">Media</span>
@@ -37,7 +37,7 @@ const Layout = ({ children, theme, onToggleTheme }) => {
               onClick={onToggleTheme}
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
               title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              className="ml-1 inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface)] text-base text-[var(--text-secondary)] transition-colors duration-200 hover:bg-[var(--surface-hover)] hover:text-violet-500 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-[var(--page-bg)]"
+              className="ml-1 inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-(--border) bg-(--surface) text-base text-(--text-secondary) transition-colors duration-200 hover:bg-(--surface-hover) hover:text-violet-500 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-(--page-bg)"
             >
               <span aria-hidden="true">{theme === "dark" ? "☼" : "☾"}</span>
             </button>

@@ -18,12 +18,15 @@ const ResultGrid = () => {
   const [hasMore, setHasMore] = useState(false);
   const loadMoreRef = useRef(null);
 
-  const getData = useCallback(async (pageNumber) => {
-    if (activeTab === "photo") return fetchPhotos(query, pageNumber);
-    if (activeTab === "video") return fetchVideos(query, pageNumber);
-    if (activeTab === "gif") return fetchGIF(query, pageNumber);
-    return [];
-  }, [query, activeTab]);
+  const getData = useCallback(
+    async (pageNumber) => {
+      if (activeTab === "photo") return fetchPhotos(query, pageNumber);
+      if (activeTab === "video") return fetchVideos(query, pageNumber);
+      if (activeTab === "gif") return fetchGIF(query, pageNumber);
+      return [];
+    },
+    [query, activeTab],
+  );
 
   useEffect(() => {
     if (!query) {
@@ -98,9 +101,13 @@ const ResultGrid = () => {
   if (error) {
     return (
       <div className="flex min-h-64 flex-col items-center justify-center text-center">
-        <span className="text-4xl" aria-hidden="true">⚠</span>
-        <h2 className="mt-4 text-lg font-semibold text-[var(--text-primary)]">Search unavailable</h2>
-        <p className="mt-2 text-sm text-[var(--text-muted)]">{error}</p>
+        <span className="text-4xl" aria-hidden="true">
+          ⚠
+        </span>
+        <h2 className="mt-4 text-lg font-semibold text-(--text-primary)">
+          Search unavailable
+        </h2>
+        <p className="mt-2 text-sm text-(--text-muted)">{error}</p>
       </div>
     );
   }
@@ -108,15 +115,16 @@ const ResultGrid = () => {
   return (
     <>
       {query && !loading && (results ?? []).length > 0 && (
-        <p className="mb-4 text-sm text-[var(--text-muted)]">
-          {results.length} {mediaLabel} for <span className="text-[var(--text-secondary)]">“{query}”</span>
+        <p className="mb-4 text-sm text-(--text-muted)">
+          {results.length} {mediaLabel} for{" "}
+          <span className="text-(--text-secondary)">“{query}”</span>
         </p>
       )}
       {loading ? (
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
           {Array.from({ length: 8 }).map((_, index) => (
             <div
-              className={`animate-pulse rounded-2xl bg-[var(--surface-elevated)] ${activeTab === "photo" ? "aspect-square" : "aspect-video"}`}
+              className={`animate-pulse rounded-2xl bg-(--surface-elevated) ${activeTab === "photo" ? "aspect-square" : "aspect-video"}`}
               key={index}
             />
           ))}
@@ -129,17 +137,22 @@ const ResultGrid = () => {
             ))}
           </div>
           {hasMore && (
-            <div ref={loadMoreRef} className="flex h-16 items-center justify-center">
+            <div
+              ref={loadMoreRef}
+              className="flex h-16 items-center justify-center"
+            >
               {loadingMore && (
-                <span className="h-6 w-24 animate-pulse rounded-full bg-[var(--surface-elevated)]" />
+                <span className="h-6 w-24 animate-pulse rounded-full bg-(--surface-elevated)" />
               )}
             </div>
           )}
         </>
       ) : (
         <div className="flex min-h-64 flex-col items-center justify-center text-center">
-          <span className="text-5xl text-[var(--text-muted)]" aria-hidden="true">⌕</span>
-          <p className="mt-4 text-base text-[var(--text-muted)]">
+          <span className="text-5xl text-(--text-muted)" aria-hidden="true">
+            ⌕
+          </span>
+          <p className="mt-4 text-base text-(--text-muted)">
             Search for photos, videos, or GIFs above
           </p>
         </div>

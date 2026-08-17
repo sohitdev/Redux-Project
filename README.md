@@ -187,7 +187,7 @@ npm --version     # Should be v9.0 or higher
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/Redux-Project.git
+   git clone https://github.com/sohitdev/Redux-Project.git
    cd Redux-Project
    ```
 
@@ -669,7 +669,7 @@ The project uses **Tailwind CSS** with **CSS variables** for dynamic theming.
 **Theme-Aware Styling**:
 
 ```jsx
-<button className="bg-[var(--surface)] text-[var(--text-primary)] border-[var(--border)]">
+<button className="bg-(--surface) text-(--text-primary) border-(--border)">
   Theme-aware button
 </button>
 ```
@@ -677,7 +677,7 @@ The project uses **Tailwind CSS** with **CSS variables** for dynamic theming.
 **Focus States** (Accessibility):
 
 ```jsx
-<input className="focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-[var(--page-bg)]" />
+<input className="focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-(--page-bg)" />
 ```
 
 **Responsive Patterns**:
@@ -770,7 +770,7 @@ netlify deploy --prod
 
 ```bash
 # Add to package.json
-"homepage": "https://yourusername.github.io/Redux-Project"
+"homepage": "https://sohitdev.github.io/Redux-Project"
 
 # Deploy
 npm run build
@@ -933,7 +933,7 @@ Monitor state changes in real-time during development.
 1. **Fork the repository**
 
    ```bash
-   git clone https://github.com/yourusername/Redux-Project.git
+   git clone https://github.com/sohitdev/Redux-Project.git
    cd Redux-Project
    ```
 
@@ -981,30 +981,6 @@ Monitor state changes in real-time during development.
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file for details.
-
-### MIT License Summary
-
-- ✅ Use commercially
-- ✅ Modify source code
-- ✅ Distribute
-- ❌ Hold liable
-- ❌ Use trademark
-
----
-
-## 📞 Support & Community
-
-- **Issues**: [GitHub Issues](https://github.com/yourusername/Redux-Project/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/Redux-Project/discussions)
-- **Email**: support@yourdomain.com
-
----
-
-## 🗺️ Roadmap
-
 ### Upcoming Features
 
 - [ ] User authentication & accounts
@@ -1040,9 +1016,20 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file
 
 ---
 
+## 📞 Support & Community
+
+Have questions or feedback? Connect with the project:
+
+- **GitHub Repository**: [sohitdev/Redux-Project](https://github.com/sohitdev/Redux-Project)
+- **GitHub Profile**: [@sohitdev](https://github.com/sohitdev)
+- **Issues**: [Report bugs or request features](https://github.com/sohitdev/Redux-Project/issues)
+- **Discussions**: [Join community discussions](https://github.com/sohitdev/Redux-Project/discussions)
+
+---
+
 <div align="center">
 
-Made with ❤️ by the team
+Made with ❤️ by [Sohit](https://github.com/sohitdev)
 
 [⬆ Back to top](#media-search-hub)
 
