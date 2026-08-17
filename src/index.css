@@ -1,12 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
-* {
-  font-family: helvetica neue;
+:root {
+  color-scheme: dark;
+  font-family: "Inter", sans-serif;
+  --page-bg: #080808;
+  --surface: #111111;
+  --surface-elevated: #1a1a1a;
+  --surface-hover: #202020;
+  --border: #222222;
+  --border-strong: #2a2a2a;
+  --text-primary: #f0f0f0;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --toastify-color-dark: var(--surface-elevated);
+  --toastify-color-light: var(--surface-elevated);
+  --toastify-color-success: #10b981;
+  --toastify-color-error: #ef4444;
+  --toastify-text-color-dark: var(--text-primary);
+  --toastify-text-color-light: var(--text-primary);
+  --toastify-font-family: "Inter", sans-serif;
 }
 
-:root {
-  --c1: rgb(12, 43, 78);
-  --c2: rgb(26, 61, 100);
-  --c3: rgb(29, 84, 108);
-  --c3: rgb(244, 244, 244);
+:root[data-theme="light"] {
+  color-scheme: light;
+  --page-bg: #f7f7fb;
+  --surface: #ffffff;
+  --surface-elevated: #f1f1f5;
+  --surface-hover: #e9e9ef;
+  --border: #dedee7;
+  --border-strong: #c9c9d5;
+  --text-primary: #17171f;
+  --text-secondary: #3f3f4a;
+  --text-muted: #6b6b78;
+}
+
+.Toastify__toast {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
 }
